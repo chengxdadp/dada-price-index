@@ -22,7 +22,7 @@ def migrate_all(db_path=None):
     执行完整的数据迁移
 
     参数:
-        db_path: 目标数据库路径，默认为项目根目录下的 price_data.db
+        db_path: 目标数据库路径，默认为项目根目录下的 data/price_data.db
     """
     print("=" * 60)
     print("Pickle to SQLite 数据迁移")
@@ -51,7 +51,9 @@ def migrate_all(db_path=None):
 
     # 初始化数据库
     if db_path is None:
-        db_path = os.path.join(parent_dir, 'price_data.db')
+        db_path = os.path.join(parent_dir, 'data', 'price_data.db')
+
+    os.makedirs(os.path.dirname(db_path), exist_ok=True)
 
     print(f"目标数据库：{db_path}")
 
@@ -192,7 +194,7 @@ def verify_migration(db, pkl_files):
 
 def show_current_status():
     """显示当前数据库状态"""
-    db_path = os.path.join(parent_dir, 'price_data.db')
+    db_path = os.path.join(parent_dir, 'data', 'price_data.db')
 
     if not os.path.exists(db_path):
         print("数据库不存在，请先运行迁移")
@@ -242,7 +244,7 @@ Pickle to SQLite 迁移脚本
     - price_index.pkl   -> price_index 表
 
   目标文件：
-    - price_data.db (SQLite 数据库)
+    - data/price_data.db (SQLite 数据库)
 """)
             return 0
 
