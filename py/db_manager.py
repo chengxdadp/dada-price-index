@@ -12,8 +12,8 @@ from datetime import datetime
 from contextlib import contextmanager
 
 
-# 数据库文件默认路径
-DEFAULT_DB_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'price_data.db')
+# 数据库文件默认路径（放在 data 目录下）
+DEFAULT_DB_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'price_data.db')
 
 
 class DatabaseManager:
@@ -24,7 +24,7 @@ class DatabaseManager:
         初始化数据库连接
 
         参数:
-            db_path: 数据库文件路径，默认为项目根目录下的 price_data.db
+            db_path: 数据库文件路径，默认为项目根目录下的 data/price_data.db
         """
         self.db_path = db_path or DEFAULT_DB_PATH
         self.conn = None
