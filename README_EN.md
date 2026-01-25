@@ -6,15 +6,15 @@
 
 This project builds a high‑frequency Producer Price Index (PPI) from the National Bureau of Statistics “Important Means of Production Price Changes” releases. The base period is **mid‑September 2020 = 100**, and the methodology change from **late December 2025 to early January 2026** is chain‑linked for continuity. The pipeline covers crawling, index calculation, visualization, and SQLite storage.
 
-## Basic Stats (Example Output)
+## Basic Stats (Current DB Output)
 
-Running `python py/update.py` or `python py/update.py --chart` prints the latest indicators, for example:
+Running `python py/update.py` or `python py/update.py --chart` prints the latest indicators. Based on the current `data/price_data.db`, the latest output is:
 
 ```
-Latest: 2026-01 (early)
-Price Index: 112.34
-MoM: 0.85%
-YoY: -1.42%
+Latest: 2026-01 (mid)
+Price Index: 129.67
+MoM: 0.68%
+YoY: 1.69%
 ```
 
 Use `python py/update.py --status` for database summary statistics.

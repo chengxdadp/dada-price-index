@@ -8,15 +8,15 @@
 
 > English version: [README_EN.md](README_EN.md)
 
-## 基础统计指标（示例输出）
+## 基础统计指标（当前数据库结果）
 
-运行 `python py/update.py` 或 `python py/update.py --chart` 会打印最新一期指标，例如：
+运行 `python py/update.py` 或 `python py/update.py --chart` 会打印最新一期指标。基于当前 `data/price_data.db` 读取到的最新结果如下：
 
 ```
-最新数据：2026年1月第1旬
-价格指数：112.34
-环比增长：0.85%
-同比增长：-1.42%
+最新数据：2026年1月第2旬
+价格指数：129.67
+环比增长：0.68%
+同比增长：1.69%
 ```
 
 如需查看数据库总体规模，可使用 `python py/update.py --status`。
