@@ -222,7 +222,7 @@ python update.py [选项]
   python update.py --status  # 查看数据库状态
 
 说明：
-  - 数据存储在 SQLite 数据库中 (price_data.db)
+  - 数据存储在 SQLite 数据库中 (data/price_data.db)
   - 增量更新模式：读取已有指数序列，仅计算新增期数，效率更高
   - 全量重算模式：从基期开始重新计算，用于口径变更或数据修复
   - 2026年1月起统计局调整了监测品种，系统会自动处理口径变更
