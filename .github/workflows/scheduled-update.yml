@@ -35,7 +35,7 @@ jobs:
         id: changes
         run: |
           git add data/price_data.db charts/
-          git diff --quiet && git diff --cached --quiet && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
+          git diff --cached --quiet && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
 
       - name: Commit and push updates
         if: steps.changes.outputs.changed == 'true'
