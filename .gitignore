@@ -1,0 +1,9 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Local runtime outputs
+*.log
+
+# Keep charts tracked if needed, but ignore temp artifacts
+charts/*.tmp
