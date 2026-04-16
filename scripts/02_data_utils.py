@@ -13,7 +13,9 @@ import re
 import time
 import os
 
-from db_manager import get_db
+from _loader import load_local_module
+
+get_db = load_local_module('03_db_manager.py', 'dada_db_manager').get_db
 
 
 def fetch_price_table(url):

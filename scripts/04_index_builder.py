@@ -9,7 +9,9 @@ import pandas as pd
 import os
 import argparse
 
-from db_manager import get_db
+from _loader import load_local_module
+
+get_db = load_local_module('03_db_manager.py', 'dada_db_manager').get_db
 
 
 # ============ 口径变更配置 ============
@@ -332,7 +334,7 @@ def incremental_update(base_year=2020, base_month=9, base_period=2):
     if (int(first_new['Year']), int(first_new['Month']), int(first_new['Period'])) != (expected_year, expected_month, expected_period):
         print(f"警告：序列不连续！预期下一期为{expected_year}年{expected_month}月第{expected_period}旬，")
         print(f"但新数据起始于{first_new['Year']}年{first_new['Month']}月第{first_new['Period']}旬")
-        print("建议运行全量重算：python update.py --full")
+        print("建议运行全量重算：python scripts/01_update.py --full")
         return None, "序列不连续"
 
     # 获取原基期价格
