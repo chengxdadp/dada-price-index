@@ -14,7 +14,9 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, current_dir)
 
-from db_manager import DatabaseManager
+from _loader import load_local_module
+
+DatabaseManager = load_local_module('03_db_manager.py', 'dada_db_manager').DatabaseManager
 
 
 def migrate_all(db_path=None):
@@ -230,9 +232,9 @@ def main():
 Pickle to SQLite 迁移脚本
 
 用法：
-  python migrate_to_sqlite.py           执行迁移
-  python migrate_to_sqlite.py --status  查看当前数据库状态
-  python migrate_to_sqlite.py --help    显示帮助信息
+  python 06_migrate_to_sqlite.py           执行迁移
+  python 06_migrate_to_sqlite.py --status  查看当前数据库状态
+  python 06_migrate_to_sqlite.py --help    显示帮助信息
 
 说明：
   此脚本将现有的 pickle 文件数据迁移到 SQLite 数据库。
