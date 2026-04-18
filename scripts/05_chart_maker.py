@@ -3,13 +3,27 @@ from datetime import datetime
 
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib import font_manager
 
 from _loader import load_local_module
 
 build_price_index = load_local_module('04_index_builder.py', 'dada_index_builder').build_price_index
 
-# 设置中文字体
-plt.rcParams['font.sans-serif'] = ['SimHei']
+# 设置中文字体（自动选择可用字体，避免 SimHei 缺失导致大量告警）
+_FONT_CANDIDATES = [
+    'SimHei',
+    'Noto Sans CJK SC',
+    'Microsoft YaHei',
+    'PingFang SC',
+    'WenQuanYi Zen Hei',
+    'Source Han Sans CN',
+]
+_AVAILABLE_FONTS = {f.name for f in font_manager.fontManager.ttflist}
+_SELECTED_FONTS = [f for f in _FONT_CANDIDATES if f in _AVAILABLE_FONTS]
+if not _SELECTED_FONTS:
+    _SELECTED_FONTS = ['DejaVu Sans']
+
+plt.rcParams['font.sans-serif'] = _SELECTED_FONTS + ['DejaVu Sans']
 plt.rcParams['axes.unicode_minus'] = False
 
 MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
