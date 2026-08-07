@@ -3,7 +3,7 @@ from datetime import datetime
 
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib import font_manager
+from matplotlib import colormaps, font_manager
 
 from _loader import load_local_module
 
@@ -104,7 +104,7 @@ def plot_by_year(index_df=None, save_path=None):
     plt.figure(figsize=(15, 6))
 
     years = sorted(index_df['Year'].unique())
-    color_map = plt.cm.get_cmap('tab20', max(len(years), 3))
+    color_map = colormaps.get_cmap('tab20').resampled(max(len(years), 3))
 
     for i, year in enumerate(years):
         year_data = index_df[index_df['Year'] == year]
